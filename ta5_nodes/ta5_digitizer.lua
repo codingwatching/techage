@@ -272,6 +272,24 @@ local function config_item(pos, payload)
 	inv:set_stack("main", 1, stack)
 end
 
+-- Returns true if the digitizer can be started (EX_POINTS check)
+-- Owner-based: 'src' in on_recv_message is a node number, not a player,
+-- so we check the digitizer's owner for the required experience points.
+local function expoints_check(pos)
+	if EX_POINTS == 0 then
+		return true
+	end
+	local owner = M(pos):get_string("owner")
+	if owner == "" then
+		return true
+	end
+	local player = minetest.get_player_by_name(owner)
+	if not player then
+		return true
+	end
+	return techage.get_expoints(player) >= EX_POINTS
+end
+
 local function stop_node(pos, nvm, state)
 end
 
@@ -655,6 +673,9 @@ techage.register_node({"techage:ta5_digitizer_pas", "techage:ta5_digitizer_act"}
 		if topic == "pull" then
 			local nvm = techage.get_nvm(pos)
 			if not techage.is_running(nvm) and configured_item(pos) then
+				if not expoints_check(pos) then
+					return false
+				end
 				nvm.opmode = 1
 				State:start(pos, nvm)
 				return true
@@ -663,6 +684,9 @@ techage.register_node({"techage:ta5_digitizer_pas", "techage:ta5_digitizer_act"}
 		elseif topic == "push" then
 			local nvm = techage.get_nvm(pos)
 			if not techage.is_running(nvm) and configured_item(pos) then
+				if not expoints_check(pos) then
+					return false
+				end
 				nvm.opmode = 2
 				State:start(pos, nvm)
 				return true
