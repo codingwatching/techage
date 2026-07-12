@@ -26,10 +26,15 @@ local Recipes = {
 		filter = "default:gravel",
 		spent_filter = "default:desert_cobble",
 		output = "techage:lye",
-		output_chance = 0.5,
-		degradation_chance = 0.5,
+		output_chance = 0.8,
+		degradation_chance = 0.2,
 	},
 }
+
+-- API function to register further Liquid Filter recipes
+function techage.register_liquid_filter_recipe(input_name, recipe_def)
+	Recipes[input_name] = recipe_def
+end
 
 
 -- Checks if the filter structure is ok and returns the amount of active filters
