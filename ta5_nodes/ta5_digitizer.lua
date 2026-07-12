@@ -352,6 +352,11 @@ local function digitize(pos, nvm, mem)
 	if idx then
 		local taken = techage.pull_items(pos, tube_dir, num_items, item_name)
 		if taken and taken:get_count() > 0 then
+			if taken:get_name() ~= item_name then
+				techage.push_items(pos, tube_dir, taken)
+				State:fault(pos, nvm, S("Wrong item returned: expected @1, got @2", item_name, taken:get_name()))
+				return false
+			end
 			if not is_valid_item(taken) then
 				techage.push_items(pos, tube_dir, taken)
 				State:fault(pos, nvm, S("Invalid item type"))

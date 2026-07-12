@@ -1478,5 +1478,6 @@ no configured item=ningún objeto configurado
 No configured item=Ningún objeto configurado
 Invalid item type=Tipo de objeto no válido
 Item not storable (not stackable, has metadata, or is worn)=Objeto no almacenable (no apilable, tiene metadatos o está desgastado)
+Wrong item returned: expected @1, got @2=Objeto incorrecto devuelto: se esperaba @1, se obtuvo @2
 [Digitizer] Storage not empty! Empty the storage first.=[Digitizer] ¡El almacenamiento no está vacío! Vacía el almacenamiento primero.
 [Digitizer] Stop the Digitizer first!=[Digitizer] ¡Detén el Digitalizador primero!

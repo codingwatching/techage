@@ -1487,3 +1487,6 @@ Use a trowel to remove the node.=Utilisez une truelle pour enlever le noeud.
 TA3 Valve closed=TA3 Valve fermée
 TA3 Valve open=TA3 Valve ouverte
 Here is not enough wind (A free air space of 41x41x21 m is necessary)!=Ici, il n'y a pas assez de vent (un espace libre de 41x41x21 m est nécessaire)!
+Item not storable (not stackable, has metadata, or is worn)=Objet non stockable (non empilable, a des métadonnées ou est usé)
+Wrong item returned: expected @1, got @2=Mauvais objet renvoyé : @1 attendu, @2 reçu
+[Digitizer] Storage not empty! Empty the storage first.=[Digitizer] Stockage non vide ! Veuillez d'abord le vider.
