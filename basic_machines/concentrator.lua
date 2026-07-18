@@ -70,6 +70,13 @@ for _, name in ipairs(names) do
 end
 
 techage.register_node(names, {
+	on_pull_item = function(pos, in_dir, num, item_name)
+		local push_dir = M(pos):get_int("push_dir")
+		if networks.Flip[push_dir] ~= in_dir then
+			return techage.pull_items(pos, push_dir, num, item_name)
+		end
+		return nil
+	end,
 	on_push_item = function(pos, in_dir, stack)
 		local push_dir = M(pos):get_int("push_dir")
 		if networks.Flip[push_dir] ~= in_dir then
@@ -123,6 +130,13 @@ for _, name in ipairs(names) do
 end
 
 techage.register_node(names, {
+	on_pull_item = function(pos, in_dir, num, item_name)
+		local push_dir = M(pos):get_int("push_dir")
+		if networks.Flip[push_dir] ~= in_dir then
+			return techage.pull_items(pos, push_dir, num, item_name)
+		end
+		return nil
+	end,
 	on_push_item = function(pos, in_dir, stack)
 		local push_dir = M(pos):get_int("push_dir")
 		if networks.Flip[push_dir] ~= in_dir then
