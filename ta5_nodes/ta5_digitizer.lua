@@ -759,7 +759,9 @@ techage.register_node({"techage:ta5_digitizer_pas", "techage:ta5_digitizer_act"}
 })
 
 power.register_nodes({"techage:ta5_digitizer_pas", "techage:ta5_digitizer_act"}, Cable, "con", {"B", "L", "F", "D", "U"})
-Tube:set_valid_sides({"techage:ta5_digitizer_pas", "techage:ta5_digitizer_act"}, {"R"})
+Tube:set_valid_sides("techage:ta5_digitizer_pas", {"R"})
+Tube:set_valid_sides("techage:ta5_digitizer_act", {"R"})
+Tube:add_secondary_node_names({"techage:ta5_digitizer_pas", "techage:ta5_digitizer_act"})
 
 techage.recipes.add("ta4_electronic_fab", {
 	output = "techage:ta5_controlunit 1",
