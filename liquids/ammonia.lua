@@ -20,6 +20,18 @@ minetest.register_craftitem("techage:ammonia", {
 	groups = {ta_liquid = 1},
 })
 
+minetest.register_craftitem("techage:cylinder_small_ammonia", {
+	description = S("Ammonia Cylinder Small"),
+	inventory_image = "techage_gas_cylinder_small.png^[colorize:#FF9900:120",
+	stack_max = 1,
+})
+
+minetest.register_craftitem("techage:cylinder_large_ammonia", {
+	description = S("Ammonia Cylinder Large"),
+	inventory_image = "techage_gas_cylinder_large.png^[colorize:#FF9900:120",
+	stack_max = 1,
+})
+
 techage.register_liquid("techage:cylinder_small_ammonia", "techage:ta3_cylinder_small", techage.volume_small_gascylinder, "techage:ammonia")
 techage.register_liquid("techage:cylinder_large_ammonia", "techage:ta3_cylinder_large", techage.volume_big_gascylinder, "techage:ammonia")
 
