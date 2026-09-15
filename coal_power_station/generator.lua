@@ -271,7 +271,7 @@ minetest.register_craft({
 	output = "techage:generator",
 	recipe = {
 		{"basic_materials:steel_bar", "dye:green", "default:wood"},
-		{"", "basic_materials:gear_steel", "techage:electric_cableS"},
+		{"techage:vacuum_tube", "basic_materials:gear_steel", "techage:electric_cableS"},
 		{"default:wood", "techage:iron_ingot", "basic_materials:steel_bar"},
 	},
 })

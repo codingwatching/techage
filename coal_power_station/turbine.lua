@@ -178,7 +178,7 @@ minetest.register_craft({
 	output = "techage:turbine",
 	recipe = {
 		{"basic_materials:steel_bar", "techage:steam_pipeS", "default:wood"},
-		{"techage:steam_pipeS", "basic_materials:gear_steel", ""},
+		{"techage:steam_pipeS", "basic_materials:gear_steel", "techage:vacuum_tube"},
 		{"default:wood", "techage:iron_ingot", "basic_materials:steel_bar"},
 	},
 })
