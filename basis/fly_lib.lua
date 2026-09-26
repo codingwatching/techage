@@ -342,9 +342,10 @@ local function attach_single_object(parent, obj, distance)
 		obj:set_attach(parent, "", distance, vector.multiply(rot, 180 / math.pi))
 		if obj:is_player() then
 			obj:set_properties({visual_size = {x=2.9, y=2.9}})
-			if lock_player(obj) then
-				table.insert(self.players, {name = obj:get_player_name(), offs = offs, visual_size = visual_size})
-			end
+			-- The player must always be tracked so that the visual size is
+			-- restored on detach, even if the physics lock is held by another mod.
+			lock_player(obj)
+			table.insert(self.players, {name = obj:get_player_name(), offs = offs, visual_size = visual_size})
 		else
 			obj:set_properties({visual_size = {x=2.9, y=2.9}})
 			table.insert(self.entities, {objID = get_object_id(obj), offs = offs, visual_size = visual_size})
@@ -1028,7 +1029,9 @@ function flylib.remove_node(pos)
 end
 
 minetest.register_on_joinplayer(function(player)
-	unlock_player(player)
+	if unlock_player(player) then
+		player:set_properties({visual_size = {x=1, y=1}})
+	end
 end)
 
 minetest.register_on_leaveplayer(function(player)
