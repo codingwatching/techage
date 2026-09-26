@@ -95,15 +95,18 @@ end
 local function add_node_names(pos, nvm)
 	local inv = M(pos):get_inventory()
 	local item_list = inv:get_list("main")
+	nvm.config = nvm.config or {}
 	for idx = 1, #nvm.config do
 		local node = techage.get_node_lvm(nvm.config[idx].pos)
 		local item = item_list[idx]
-		if nvm.config[idx].state then
-			nvm.config[idx].nameR = node.name
-			nvm.config[idx].nameS = item:get_count() > 0 and item:get_name() or "air"
-		else
-			nvm.config[idx].nameR = item:get_count() > 0 and item:get_name() or "air"
-			nvm.config[idx].nameS = node.name
+		if item then
+			if nvm.config[idx].state then
+				nvm.config[idx].nameR = node.name
+				nvm.config[idx].nameS = item:get_count() > 0 and item:get_name() or "air"
+			else
+				nvm.config[idx].nameR = item:get_count() > 0 and item:get_name() or "air"
+				nvm.config[idx].nameS = node.name
+			end
 		end
 	end
 end
